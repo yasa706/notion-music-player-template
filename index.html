@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notion 音乐播放器</title>
+  <link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css">
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #aplayer {
+      width: 100%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="aplayer"></div>
+
+  <script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script>
+  <script>
+    fetch('https://raw.githubusercontent.com/yasa706/notion-music-player-template/main/music.json')
+      .then(res => res.json())
+      .then(data => {
+        const ap = new APlayer({
+          container: document.getElementById('aplayer'),
+          fixed: false,
+          autoplay: false,
+          loop: 'all',
+          audio: data
+        });
+      });
+  </script>
+
+</body>
+</html>
